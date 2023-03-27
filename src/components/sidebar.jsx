@@ -13,10 +13,10 @@ import { CartContext } from '../contexts/cart-context';
 
 export default function Sidebar() {
   const {isOpen, handleClose} = useContext(SidebarContext);
-  const {cart} = useContext(CartContext);
+  const {cart, total, clearCart} = useContext(CartContext);
 
   return (
-    <div className={` ${isOpen ? 'right-0' : '-right-full'} w-full bg-white fixed top-0 h-full px-4 shadow-2xl md:w-[35vw] transition-all duration-300 z-20 lg:px-[35px]`}>
+    <div className={` ${isOpen ? 'right-0' : '-right-full'} w-full bg-white fixed top-0 h-full px-4 shadow-2xl md:w-[47vw] transition-all duration-300 z-20 lg:px-[35px]`}>
       <div className='flex items-center justify-between py-6 border-b'>
         <div className='uppercase text-sm font-semibold'>Shopping Bag (0)</div>
         {/* icon */}
@@ -24,8 +24,22 @@ export default function Sidebar() {
           <IoMdArrowForward className='text-2xl' />
         </div>
       </div>
-      <div>
+      <div className='flex flex-col gap-y-2 h-[520px] lg:h-[520px] overflow-y-auto overflow-x-hidden border-b'>
         {cart.map((item) => { return <CartItem item={item} key={item.id} /> })}
+      </div>
+      <div className='flex flex-col gap-y-3 py-4 mt-4'>
+        <div className='flex w-full justify-between items-center'>
+          {/* total */}
+          <div className='uppercase font-semibold'>
+            <span className='mr-2'>Total: $ {total}</span>
+          </div>
+          {/* clear cart icon */}
+          <div
+            onClick={clearCart}
+            className='cursor-pointer py-2 bg-red-500 text-white w-10 h-10 flex justify-center rounded items-center text-xl'>
+            <FiTrash2 />
+          </div>
+        </div>
       </div>
     </div>
   )
