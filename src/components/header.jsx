@@ -24,7 +24,7 @@ export default function Header() {
         className='max-w-[50px] flex justify-center items-center border rounded w-8 h-8 cursor-pointer hover:bg-blue-50 relative'
         onClick={() => setIsOpen(!isOpen)}>
         <BsBag className='text-2x' />
-        <div className='bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] text-white rounded-full flex justify-center items-center'>{itemAmount}</div>
+        <div className='bg-blue-400 absolute -right-2 -bottom-2 text-[12px] w-[18px] text-white rounded-full flex justify-center items-center'>{itemAmount}</div>
       </div>
     </header>
   )

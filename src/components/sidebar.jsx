@@ -24,21 +24,25 @@ export default function Sidebar() {
           <IoMdArrowForward className='text-2xl' />
         </div>
       </div>
-      <div className='flex flex-col gap-y-2 h-[520px] lg:h-[520px] overflow-y-auto overflow-x-hidden border-b'>
+      <div className='flex flex-col gap-y-2 h-[440px] lg:h-[520px] overflow-y-auto overflow-x-hidden border-b'>
         {cart.map((item) => { return <CartItem item={item} key={item.id} /> })}
       </div>
-      <div className='flex flex-col gap-y-3 py-4 mt-4'>
+      <div className='flex flex-col gap-y-3 py-4 my-4'>
         <div className='flex w-full justify-between items-center'>
           {/* total */}
           <div className='uppercase font-semibold'>
-            <span className='mr-2'>Total: $ {total}</span>
+            <span className='mr-2'>Total: $ {parseFloat(total).toFixed(2)}</span>
           </div>
           {/* clear cart icon */}
           <div
             onClick={clearCart}
-            className='cursor-pointer py-2 bg-red-500 text-white w-10 h-10 flex justify-center rounded items-center text-xl'>
+            className='cursor-pointer py-2 bg-blue-500 hover:bg-blue-300 text-white w-10 h-10 flex justify-center rounded items-center text-xl'>
             <FiTrash2 />
           </div>
+        </div>
+        <div className='flex flex-col gap-y-2'>
+          <Link to={'/'} className='bg-neutral-200 hover:bg-neutral-300 flex p-4 justify-center items-center text-neutral-900 w-full font-medium'>View cart</Link>
+          <Link to={'/'} className='bg-neutral-900 hover:bg-neutral-700 flex p-4 justify-center items-center text-neutral-200 w-full font-medium'>Checkout</Link>
         </div>
       </div>
     </div>
